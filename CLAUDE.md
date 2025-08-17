@@ -1,32 +1,5 @@
 # Health Monitoring System with Home Assistant, Node-RED, Garmin Connect, and Intervals.icu
 
-## MCP Server Integration (Claude Instruction)
-
-**IMPORTANT: Claude must automatically use these MCP servers when working in this health monitoring system:**
-
-### Available MCP Servers
-- **Serena MCP** (`./scripts/serena-mcp-bridge.js`): For semantic code analysis, symbol mapping, and pattern search
-- **Context7 MCP** (`./scripts/context7-mcp-server.js`): For up-to-date library documentation and API patterns  
-- **Home Assistant MCP** (`./scripts/home-assistant-mcp-server.js`): For direct Home Assistant integration and automation
-
-### Automatic Usage Instructions for Claude
-1. **When analyzing code**: Always use Serena MCP tools for deeper semantic understanding
-2. **When looking up documentation**: Use Context7 MCP to get current library documentation and best practices
-3. **When working with Home Assistant**: Use Home Assistant MCP tools for entity management, service calls, and configuration
-4. **When troubleshooting**: Leverage all three MCP servers for comprehensive analysis and solutions
-
-### MCP Tool Usage Patterns
-```bash
-# Example automatic usage scenarios:
-# Code analysis: Use mcp__serena__search_for_pattern, mcp__serena__find_symbol
-# Documentation: Use mcp__context7__resolve-library-id, mcp__context7__get-library-docs  
-# Home Assistant: Use ha_get_states, ha_call_service, ha_get_entity
-```
-
-**Configuration**: MCP servers are configured in `mcp_config.json` and automatically available when working in this directory.
-
----
-
 ## Introduction
 This document outlines the integration of **Home Assistant**, **Node-RED**, **Garmin Connect**, and **Intervals.icu** to track, monitor, and optimize various health metrics. By combining these tools, you can create a comprehensive system to monitor physical, mental, and emotional health, and take actionable steps to improve overall well-being.
 
@@ -94,13 +67,7 @@ This document outlines the integration of **Home Assistant**, **Node-RED**, **Ga
 3. **Data Storage**: Home Assistant recorder → InfluxDB (optional) → Long-term analytics
 4. **Data Visualization**: Home Assistant dashboards → Grafana (optional) → Advanced cycling performance charts
 5. **External Sync**: Training data → Intervals.icu → Cycling performance analysis and Alan Couzens methodology tracking
-6. **MCP Integration**: Claude Code automatically leverages MCP servers for enhanced analysis, documentation lookup, and Home Assistant management
-
-### MCP Server Architecture
-- **Serena MCP**: Provides semantic code analysis for Node-RED flows, Home Assistant configurations, and automation scripts
-- **Context7 MCP**: Delivers real-time documentation for Home Assistant integrations, Node-RED nodes, and health monitoring best practices  
-- **Home Assistant MCP**: Enables direct entity management, service calls, and configuration access from Claude Code
-- **Health Monitoring Integration**: All MCP servers work together to provide intelligent automation suggestions and troubleshooting
+6. **External Integrations**: Support for external analytics and training platforms for enhanced data analysis
 
 ---
 
@@ -1175,60 +1142,13 @@ cards:
 
 ---
 
-## MCP Server Management
-
-### Quick Commands for Claude Code Integration
-
-#### Testing MCP Servers
-```bash
-# Test all MCP servers
-npm run test-mcp-servers
-
-# Test individual servers
-node scripts/serena-mcp-bridge.js test
-echo '{"jsonrpc": "2.0", "id": 1, "method": "tools/list"}' | node scripts/context7-mcp-server.js
-echo '{"jsonrpc": "2.0", "id": 1, "method": "tools/list"}' | node scripts/home-assistant-mcp-server.js
-```
-
-#### Environment Setup
-```bash
-# Install dependencies
-npm install
-
-# Setup environment variables
-cp .env.example .env
-# Edit .env with your credentials
-```
-
-#### MCP Server Usage in Claude Code
-```bash
-# Claude automatically uses these tools when in this directory:
-# - Serena: mcp__serena__search_for_pattern, mcp__serena__find_symbol
-# - Context7: mcp__context7__resolve-library-id, mcp__context7__get-library-docs
-# - Home Assistant: ha_get_states, ha_call_service, ha_get_entity
-```
-
-### Troubleshooting MCP Integration
-
-#### Common Issues
-1. **Missing Dependencies**: Run `npm install` to install MCP SDK
-2. **Environment Variables**: Ensure `.env` file contains valid Home Assistant credentials
-3. **Network Connectivity**: Check Home Assistant URL and token authentication
-4. **MCP Configuration**: Verify `mcp_config.json` paths and settings
-
-#### Health Monitoring Specific MCP Usage
-- **Analyzing Health Data**: Serena MCP analyzes patterns in sensor data and automations
-- **Documentation Lookup**: Context7 MCP provides current best practices for health integrations
-- **Real-time Monitoring**: Home Assistant MCP enables live health metric queries and automation triggers
-
----
 
 ## Conclusion
 
 This comprehensive health monitoring system provides a robust foundation for tracking, analyzing, and improving your overall well-being. By integrating Garmin Connect with Home Assistant and leveraging Node-RED for advanced automation, you can create a personalized health dashboard that grows with your needs.
 
-The system's modular design allows you to start with basic metrics and gradually add more sophisticated monitoring and analysis capabilities. The integrated MCP servers provide Claude Code with enhanced capabilities for analysis, documentation, and automation management.
+The system's modular design allows you to start with basic metrics and gradually add more sophisticated monitoring and analysis capabilities.
 
-Regular maintenance and optimization ensure the system remains efficient and provides valuable insights for years to come. The MCP integration ensures that Claude Code can automatically provide intelligent assistance for troubleshooting, optimization, and enhancement of your health monitoring system.
+Regular maintenance and optimization ensure the system remains efficient and provides valuable insights for years to come.
 
 Remember that this system is a tool to support your health journey - the most important factor is taking action on the insights it provides to improve your daily habits and long-term wellness.
